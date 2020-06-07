@@ -123,15 +123,15 @@ License: Creative Commons Attribution
 
             <p>
 
-Clone the Jailhouse-images repository which contains the script that will build you the image for your device -
+Clone the Jailhouse-images repository which contains the script that will build you the image for your device - <br/>
 
 $ git clone https://github.com/siemens/jailhouse-images.git
 
-Permit the build-images.sh file to be executed
+Permit the build-images.sh file to be executed <br/>
 
 $ chmod +x build-images.sh
 
-Call the script
+Call the script   <br/>
 
 $ ./build-images.sh
 
@@ -148,7 +148,7 @@ Available images demo images:
  10: Pine64+ (Allwinner A64, 2GB edition)
  0: all (may take hours...)
 
-Select images to build (space-separated index list):
+Select images to build (space-separated index list):<br/>
 
 You’ll get the above output to which you will have to input the no. next to the device for which you want to build the image ( which in this case is  9 ) - This will start the build process.
 
@@ -168,13 +168,13 @@ export FORCE_UNSAFE_CONFIGURE=1
         ${MAKE} olddefconfig
 
 
-
+<br/>
 Your image should build smoothly but give it like a half an hr to be done.
 You will get the image file here ->
  build/tmp/deploy/images/rpi4/demo-image-jailhouse-demo-rpi4.wic.img
 
  Flash this image on an empty sd card  to make a bootable sd-card so you can load it
-
+<br/>
 You need to find the location and name of the microsd card as read by your computer. To list info of all block devices run this -
 $  lsblk
 
@@ -183,10 +183,10 @@ For example -
 sdb      8:16   1  14.9G  0 disk
 ├─sdb1   8:17   1  60.9M  0 part /media/root/boot
 └─sdb2   8:18   1   5.7G  0 part /media/root/root
-
+<br/>
 Unmount the blocks under sdb
 		$ sudo umount dev/sdb/<?>
-
+<br/>
 Use dd to flash the img to sd card
 $ dd if=<location of image> of=<usb location> bs=4M  status=progress && sync
 
@@ -194,7 +194,7 @@ where ,
  if =  build/tmp/deploy/images/rpi4/demo-image-jailhouse-demo-rpi4.wic.img
 and,
 of = dev/sdb
-
+<br/>
 Insert the bootable microsd card in your raspi4 and power it up.
 The display will open up a console on which you can now run jailhouse.
 </p>
