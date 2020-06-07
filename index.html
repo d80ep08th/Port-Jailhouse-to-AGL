@@ -126,15 +126,15 @@ License: Creative Commons Attribution
 Clone the Jailhouse-images repository which contains the script that will build you the image for your device - <br/>
 
 $ git clone https://github.com/siemens/jailhouse-images.git<br/>
-
+<br/>
 Permit the build-images.sh file to be executed <br/>
 
 $ chmod +x build-images.sh<br/>
-
+<br/>
 Call the script   <br/>
 
 $ ./build-images.sh<br/>
-
+<br/>
 Available images demo images:<br/>
  1: QEMU/KVM Intel-x86 virtual target<br/>
  2: QEMU ARM64 virtual target<br/>
@@ -147,37 +147,39 @@ Available images demo images:<br/>
  9: Raspberry Pi 4 (1 GB edition)<br/>
  10: Pine64+ (Allwinner A64, 2GB edition)<br/>
  0: all (may take hours...)<br/>
-
+<br/>
 Select images to build (space-separated index list):<br/>
-
+<br/>
 You’ll get the above output to which you will have to input the no. next to the device for which you want to build the image ( which in this case is  9 ) - This will start the build process.<br/>
-
-
-
+<br/>
+-------------<br/>
+Error Maybe !
+-------------<br/>
 
 If you are running this script as root , then you may face error at some point during the build process .<br/>
-Reason being , If the kas build container is started as root, the host-tar configure step in buildroot will bail out. Beside accidental manual invocation as root, some CI setup may generate such a scenario. Avoid that failure by setting the env variable that the configure step suggests.<br/>
+Reason being , <br/>
+If the kas build container is started as root, the host-tar configure step in buildroot will bail out. Beside accidental manual invocation as root, some CI setup may generate such a scenario. Avoid that failure by setting the env variable that the configure step suggests.<br/>
+<br/>
 Change directory to  /recipes-core/non-root-initramfs/files/debian<br/>
 In debian folder there is a file named -  rules<br/>
 Add the following to the rules file : -<br/>
-
+<br/>
 export FORCE_UNSAFE_CONFIGURE=1<br/>
-
  override_dh_auto_configure:<br/>
         cp ../.config .<br/>
         ${MAKE} olddefconfig<br/>
-
-
-
+<br/>
+<br/>
 Your image should build smoothly but give it like a half an hr to be done.<br/>
-You will get the image file here -><br/>
- build/tmp/deploy/images/rpi4/demo-image-jailhouse-demo-rpi4.wic.img<br/>
-
+You will get the image file here -> build/tmp/deploy/images/rpi4/demo-image-jailhouse-demo-rpi4.wic.img<br/>
+<br/>
+<br/>
  Flash this image on an empty sd card  to make a bootable sd-card so you can load it<br/>
+<br/>
 <br/>
 You need to find the location and name of the microsd card as read by your computer. To list info of all block devices run this -<br/>
 $  lsblk<br/>
-
+<br/>
 Your usb will be listed under sdb<br/>
 For example -<br/>
 sdb      8:16   1  14.9G  0 disk<br/>
@@ -187,9 +189,10 @@ sdb      8:16   1  14.9G  0 disk<br/>
 Unmount the blocks under sdb<br/>
 		$ sudo umount dev/sdb/<?><br/>
 <br/>
+<br/>
 Use dd to flash the img to sd card<br/>
 $ dd if=<location of image> of=<usb location> bs=4M  status=progress && sync<br/>
-
+<br/>
 where ,<br/>
  if =  build/tmp/deploy/images/rpi4/demo-image-jailhouse-demo-rpi4.wic.img<br/>
 and,<br/>
