@@ -99,7 +99,7 @@ a.button:hover {
 }
 
 a.button-reversed {
-	background-color: #ddd;
+	background-color: #fff;
 	color: #666;
 }
 
@@ -437,7 +437,7 @@ div#intro h2, div#intro p {
 
 div#intro p {
 	font-size: 1.3em;
-	color: #ddd;
+	color: #fff;
 	line-height: 1.3em;
 }
 div#body.no-intro {
