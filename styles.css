@@ -244,7 +244,7 @@ header {
 	opacity: 0.97;
 	margin: 20px auto 0;
 	position: relative;
-	text-align: left;
+	text-align: center;
 	background-color: #363A3F;
 }
 
@@ -263,7 +263,7 @@ header h1 a {
     text-transform: uppercase;
     display: block;
     font-weight: 600;
-		text-align: center;
+
 }
  header h1 a:hover {
 	text-decoration: underline;
@@ -423,7 +423,7 @@ div#intro div.intro-content-short {
 
 div#intro h2 {
 	text-shadow: 1px 1px 0 #000;
-	font-size: 1em;
+	font-size: 1.5em;
 }
 
 
