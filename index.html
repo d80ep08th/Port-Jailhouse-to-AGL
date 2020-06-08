@@ -119,21 +119,21 @@ License: Creative Commons Attribution
 
 
 			<h2>Building Jailhouse image for Raspi 4</h2>
-			<div class="article-info">Posted on <time datetime="2020-06-7">7 June</time> by <a href="#" rel="author">Parth Dode [GSOC'20 week 1]</a></div>
+			<div class="article-info">Posted on <time datetime="2020-06-6">6 June</time> by <a href="#" rel="author">Parth Dode [GSOC'20 week 1]</a></div>
 
             <p>
 
 Clone the Jailhouse-images repository which contains the script that will build you the image for your device - <br/>
 
-$ git clone https://github.com/siemens/jailhouse-images.git<br/>
+<div>$ git clone https://github.com/siemens/jailhouse-images.git </div><br/>
 <br/>
 Permit the build-images.sh file to be executed <br/>
 
-$ chmod +x build-images.sh<br/>
+<div>$ chmod +x build-images.sh</div><br/>
 <br/>
 Call the script   <br/>
 
-$ ./build-images.sh<br/>
+<div>$ ./build-images.sh<br/>
 <br/>
 Available images demo images:<br/>
  1: QEMU/KVM Intel-x86 virtual target<br/>
@@ -148,7 +148,8 @@ Available images demo images:<br/>
  10: Pine64+ (Allwinner A64, 2GB edition)<br/>
  0: all (may take hours...)<br/>
 <br/>
-Select images to build (space-separated index list):<br/>
+Select images to build (space-separated index list):</div>
+<br/>
 <br/>
 You’ll get the above output to which you will have to input the no. next to the device for which you want to build the image ( which in this case is  9 ) - This will start the build process.<br/>
 <br/>
