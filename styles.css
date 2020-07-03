@@ -2,7 +2,8 @@
 
 body {
 	background: #000000;
-	background-image: url('img2.jpg');
+	background-size: cover;
+	/**background-image: url('img2.jpg');**/
   width: auto;
 	background-repeat: no-repeat;
 	margin:0;
@@ -174,6 +175,8 @@ span.required {
 }
 
 h1 {
+	text-align : center;
+	width : 100%;
 	color: #75f54e;
 	font-size: 2.7em;
 	margin-bottom: 10px;
@@ -472,7 +475,7 @@ img {
 }
 
 #content {
-	opacity: 0.97;
+	opacity: 0.5;
 	padding: 1%;
 	background-color: #2A2E32;
     	float: left;
