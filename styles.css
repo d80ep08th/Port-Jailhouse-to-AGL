@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700);
+@import url(https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap);
 
 body {
 	background: #000000;
@@ -14,6 +15,14 @@ body {
 	font-weight: 300;
 }
 
+#weeks {
+  font-family: 'Source Code Pro', monospace;
+}
+
+#Project{
+	font-family: 'Press Start 2P', cursive;
+	color: #F1C40F;
+}
 * {
 	margin:0;
 	padding:0;
@@ -62,6 +71,8 @@ blockquote p {
 p {
 	line-height: 1.7em;
 	margin-bottom: 25px;
+
+	display: block;
 }
 
 a {
@@ -415,19 +426,21 @@ div#intro {
 }
 
 div#intro .intro-content {
-	padding: 100px 40px;
+	padding: 100px 100px;
 	text-align: center;
+	font-family: 'Press Start 2P', cursive;
+
 }
 
 div#intro div.intro-content-short {
-	padding: 50px 0 40px 20px;
+	padding: 50px 0px 40px 20px;
 	text-align: center;
 }
 
 
 div#intro h2 {
 	text-shadow: 1px 1px 0 #000;
-	font-size: 1.5em;
+	font-size: 2em;
 }
 
 
@@ -436,7 +449,7 @@ div#intro div.intro-content-short h2 {
 }
 
 div#intro h2, div#intro p {
-	color: #fff;
+	color:  #F1C40F;
 	font-weight: bold;
 }
 

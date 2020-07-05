@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="styles.css" type="text/css" />
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
+<!-- google fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -34,9 +37,11 @@ License: Creative Commons Attribution
 
 <style media="screen">
 body {
-  background-image: url('pulpfic.jpeg');
+  background-image: url('starry.jpg');
 
 }
+
+
 </style>
 </head>
 
@@ -49,7 +54,7 @@ body {
 
 
 
-	<div class="width">
+	<div class="width" id="Project">
 
     		<h1><a href="https://github.com/d80ep08th/Port-Jailhouse-to-AGL">Port Jailhouse to AGL</a></h1>
 
@@ -96,7 +101,7 @@ body {
 			-->
 </div>
 
-<div class="clear">
+<div class="clear" id="weeks">
 </br>
 <nav>
 
@@ -150,24 +155,6 @@ body {
 </header>
 
 
-    <div id="intro">
-
-	           <div class="width">
-
-		          <div class="intro-content">
-
-                    <h2>		Describe							 </h2>
-
-
-
-
-            	</div>
-
-            </div>
-
-
-	    </div>
-
     <div id="body" class="width">
 
 
@@ -185,27 +172,27 @@ body {
 
                   <p>
 
-                    Procedure:-
+                    Procedure:-</br>
+</br>
+                        Boot the raspberry-pi4 with the latest raspbian buster image.</br>
+                        Edit the /boot/config.txt file ( dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25 )</br>
+                        Install can-utils (sudo apt-get install can-utils)</br>
+                        Reboot the os.</br>
+                        Prepare the can bus module to connect with the rpi4.( https://www.beyondlogic.org/wp-content/uploads/2019/12/Raspberry-PI-MCP2515-Pinout.jpg )</br>
+                        Manually bring up the can interface (  sudo /sbin/ip link set can0 up type can bitrate 500000 )</br>
+                        Use ifconfig to check that the can interface is up.</br>
+</br>
+                    Research:-</br>
+</br>
+                        The CAN bus (Controller Area Network) was originally designed by Robert Bosch for the automotive market to connect ECUs (Engine/Electronic Control Units) together. The protocol was officially released in 1986. The first CAN controller chips were introduced by Intel in 1987, and shortly thereafter by Philips.</br>
+                        Raspberry Pi doesn't have a built-in CAN Bus but its GPIO includes SPI Bus, that is supported by large number of CAN controllers.</br>
+                        The Linux kernel will not automatically discover the CAN Controller on the SPI interface. To load the appropriate driver, you must specify device tree overlay settings at boot by editing the /boot/config.txt file.</br>
+                        CAN-utils is a collection of extremely useful debugging tools using the SocketCAN interface. It includes applications such as: candump , canplayer , cansend, cangen, canbusload</br>
+                        CAN Bus is a multi-master protocol, each node needs a controller to manage its data. CAN controller is connected to the CAN bus using CAN-H and CAN-L.</br>
+                        CAN Controller needs a send/receive chip i.e. a CAN Transceiver to adapt signa    ls to CAN Bus levels.</br>
+                        The voltage range of MCP-2515 is 2.7V to 5.5V but for TJA-1050 it is 4.7V to 5.25V. The signals will not have the same level if we connect them directly. In my case I cut a trace on the PCB and soldered a pin onto the trace to deliver 5V only to the TJA1050.</br>
 
-                        Boot the raspberry-pi4 with the latest raspbian buster image.
-                        Edit the /boot/config.txt file ( dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25 )
-                        Install can-utils (sudo apt-get install can-utils)
-                        Reboot the os.
-                        Prepare the can bus module to connect with the rpi4.( https://www.beyondlogic.org/wp-content/uploads/2019/12/Raspberry-PI-MCP2515-Pinout.jpg )
-                        Manually bring up the can interface (  sudo /sbin/ip link set can0 up type can bitrate 500000 )
-                        Use ifconfig to check that the can interface is up.
-
-                    Research:-
-
-                        The CAN bus (Controller Area Network) was originally designed by Robert Bosch for the automotive market to connect ECUs (Engine/Electronic Control Units) together. The protocol was officially released in 1986. The first CAN controller chips were introduced by Intel in 1987, and shortly thereafter by Philips.
-                        Raspberry Pi doesn't have a built-in CAN Bus but its GPIO includes SPI Bus, that is supported by large number of CAN controllers.
-                        The Linux kernel will not automatically discover the CAN Controller on the SPI interface. To load the appropriate driver, you must specify device tree overlay settings at boot by editing the /boot/config.txt file.
-                        CAN-utils is a collection of extremely useful debugging tools using the SocketCAN interface. It includes applications such as: candump , canplayer , cansend, cangen, canbusload
-                        CAN Bus is a multi-master protocol, each node needs a controller to manage its data. CAN controller is connected to the CAN bus using CAN-H and CAN-L.
-                        CAN Controller needs a send/receive chip i.e. a CAN Transceiver to adapt signa    ls to CAN Bus levels.
-                        The voltage range of MCP-2515 is 2.7V to 5.5V but for TJA-1050 it is 4.7V to 5.25V. The signals will not have the same level if we connect them directly. In my case I cut a trace on the PCB and soldered a pin onto the trace to deliver 5V only to the TJA1050.
-
-Detailed steps and research will be published here :  https://d80ep08th.github.io/Port-Jailhouse-to-AGL/
+Detailed steps and research will be published here :  https://d80ep08th.github.io/Port-Jailhouse-to-AGL/</br>
 
 
                   </p>
