@@ -9,9 +9,9 @@ body {
 	background-repeat: no-repeat;
 	margin:0;
 	padding:0;
-	font-family: 'Source Sans Pro', 'sans-serif';
+	font-family:'Source Code Pro', monospace;
 	font-size: 1.1em;
-	color: #75f54e;
+	color: #f0f1f0;
 	font-weight: 300;
 }
 
@@ -19,6 +19,9 @@ body {
   font-family: 'Source Code Pro', monospace;
 }
 
+#coder{
+
+}
 #Project{
 	font-family: 'Press Start 2P', cursive;
 	color: #F1C40F;
@@ -194,12 +197,14 @@ h1 {
 }
 
 h2 {
-	color: #75f54e;
+	color: #F1C40F;
 font-size: 2.8em;
 letter-spacing: -2px;
 padding: 0px 0px 10px;
 font-weight: bold;
 margin: 0px;
+font-family: 'Press Start 2P';
+text-align : center;
 }
 
 h3 {
@@ -488,7 +493,7 @@ img {
 }
 
 #content {
-	opacity: 0.5;
+	opacity: 0.7;
 	padding: 1%;
 	background-color: #2A2E32;
     	float: left;
@@ -518,7 +523,7 @@ article {
  }
 
 article .article-info {
-    color: #3D4348;
+    color: #fafcfe;
     font-size: 0.9em;
     letter-spacing: -0.5px;
     padding: 0 0 10px 0;
