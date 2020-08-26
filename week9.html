@@ -202,6 +202,194 @@ body {
 </header>
 
 
+
+<div id="body" class="width">
+
+
+
+<section id="content" class="two-column with-right-sidebar">
+
+     <article>
+
+
+        <h2>
+
+	TITLE
+        </h2>
+	<!-- <div class="article-info">Posted on <time datetime="2020-06-26">26 June</time></div>
+	-->
+                  <p>
+This week: Create a conf file with the qemu boot variables and their values required for jailhouse to run 
+Thing is when you  start qemu and try to run " jailhouse hardware check" , the check must be passed for jailhouse to actually run. 
+Now this is the updated script that I used to run qemu:-
+qemu-system-x86_64 \
+-m 1024 \
+-drive file=./tmp/deploy/images/qemux86-64/agl-image-minimal-qemux86-64.ext4,discard=unmap,if=none,id=disk,format=raw \
+-serial vc -serial mon:stdio -netdev user,id=net \
+-kernel ./tmp/deploy/images/qemux86-64/bzImage \
+-append "root=/dev/sda intel_iommu=off memmap=82M\$0x3a000000 mem=1G vga=0x305 console=ttyS0,115200n8" \
+-cpu host,-kvm-pv-eoi,-kvm-pv-ipi,-kvm-asyncpf,-kvm-steal-time,-kvmclock,-invpcid,-hypervisor \
+-smp 4 \
+-enable-kvm \
+-machine q35,kernel_irqchip=split \
+-device ide-hd,drive=disk \
+-device intel-iommu,intremap=on,x-buggy-eim=on \
+-device intel-hda,addr=1b.0 \
+-device hda-duplex \
+-device e1000e,addr=2.0,netdev=net \
+ 
+The above script does seem to pass the checks
+
+Feature                         Availability
+
+------------------------------  ------------------
+
+Number of CPUs > 1              ok
+
+Long mode                       ok
+
+x2APIC                          ok
+
+
+VT-x (VMX)                      ok
+
+  VMX outside SMX               ok
+
+  VMX inside SMX                missing (optional)
+
+  IA32_TRUE_*_CLTS            ok
+
+  NMI exiting                   ok
+
+  Preemption timer              ok
+
+  I/O bitmap                    ok
+
+  MSR bitmap                    ok
+
+  Secondary controls            ok
+
+  Optional CR3 interception     ok
+
+  Virtualize APIC access        ok
+
+  RDTSCP                        ok
+
+  Unrestricted guest            ok
+
+  INVPCID                       missing (optional)
+
+  XSAVES                        ok
+
+  EPT                           ok
+
+    4-level page walk           ok
+
+    EPTP write-back             ok
+
+    2M pages                    ok
+
+    1G pages                    missing (optional)
+
+    INVEPT                      ok
+
+      Single or all-context     ok
+
+  VM-exit save IA32_PAT         ok
+
+  VM-exit load IA32_PAT         ok
+
+  VM-exit save IA32_EFER        ok
+
+  VM-exit load IA32_EFER        ok</br>
+</br>
+  VM-entry load IA32_PAT        ok</br>
+</br>
+  VM-entry load IA32_EFER       ok</br>
+</br>
+  Activity state HLT            ok</br>
+
+</br>
+VT-d (IOMMU #0)                 ok</br>
+</br>
+  39-bit AGAW                   ok</br>
+</br>
+  48-bit AGAW                   missing (optional)</br>
+
+  2M pages                      ok</br>
+</br>
+  1G pages                      ok</br>
+</br>
+  Queued invalidation           ok</br>
+</br>
+  Interrupt remapping           ok</br>
+</br>
+  Extended interrupt mode       ok</br>
+</br>
+</br>
+Check passed!</br>
+</br>
+ 
+This is the default qemuboot.conf file you get by default - tmp/deploy/images/qemux86-64/agl-image-minimal-qemux86-64-*.qemuboot.conf </br>
+[config_bsp]</br>
+deploy_dir_image = .</br>
+image_link_name = agl-image-minimal-qemux86-64</br>
+image_name = agl-image-minimal-qemux86-64-20200721164637</br>
+kernel_imagetype = bzImage</br>
+machine = qemux86-64</br>
+qb_audio_drv = alsa</br>
+qb_audio_opt = -soundhw hda</br>
+qb_cmdline_ip_slirp = ip=dhcp</br>
+qb_cmdline_ip_tap = ip=192.168.7.@CLIENT@::192.168.7.@GATEWAY@:255.255.255.0</br>
+qb_cpu = -cpu qemu64,+ssse3,+sse4.1,+sse4.2,+popcnt</br>
+qb_cpu_kvm = -cpu kvm64 -cpu qemu64,+ssse3,+sse4.1,+sse4.2,+popcnt</br>
+qb_cpu_kvm_x86 = -cpu core2duo</br>
+qb_cpu_kvm_x86-64 = -cpu kvm64 -cpu qemu64,+ssse3,+sse4.1,+sse4.2,+popcnt</br>
+qb_cpu_x86 = -cpu core2duo</br>
+qb_cpu_x86-64 = -cpu qemu64,+ssse3,+sse4.1,+sse4.2,+popcnt</br>
+qb_default_fstype = ext4</br>
+qb_default_kernel = bzImage--5.4.43+git0+aafb8f095e_9e1b13d7f9-r0-qemux86-64-20200721164637.bin</br>
+qb_drive_type = /dev/sd</br>
+qb_kernel_cmdline_append = oprofile.timer=1 console=ttyS0,115200n8 quiet</br>
+qb_machine = -machine q35</br>
+qb_mem = -m 2048</br>
+qb_network_device = -device virtio-net-pci,netdev=net0,mac=@MAC@</br>
+qb_opt_append = -vga vmware -show-cursor -usb -device usb-tablet -device virtio-rng-pci -vga virtio</br>
+qb_serial_opt = -serial mon:stdio -serial null</br>
+qb_system_name = qemu-system-x86_64</br>
+qb_system_name_x86-64 = qemu-system-x86_64</br>
+staging_bindir_native = ../../../work/x86_64-linux/qemu-helper-native/1.0-r1/recipe-sysroot-native/usr/bin</br>
+staging_dir_host = ../../../work/qemux86_64-agl-linux/agl-image-minimal/1.0-r0/recipe-sysroot</br>
+staging_dir_native = ../../../work/qemux86_64-agl-linux/agl-image-minimal/1.0-r0/recipe-sysroot-native</br>
+tune_arch = x86_64</br>
+We then add a new conf file in our meta-agl-jailhouse , sorting out the updated script wrt the QB variables and then build the recipe so that when we use runqemu , the required script runs by default</br>
+The following variables need to be filled for runqemu -</br>
+QB_SYSTEM_NAME:,QB_OPT_APPEND:,QB_DEFAULT_KERNEL:,QB_DEFAULT_FSTYPE:,QB_MEM:,QB_MACHINE:,QB_CPU:,QB_CPU_KVM:,QB_KERNEL_CMDLINE_APPEND:,QB_DTB:,QB_AUDIO_DRV:,QB_AUDIO_OPT:,QB_KERNEL_ROOT:,QB_NETWORK_DEVICE:,QB_TAP_OPT:,QB_SLIRP_OPT:,QB_CMDLINE_IP_SLIRP:,QB_CMDLINE_IP_TAP:,QB_ROOTFS_OPT:,QB_SERIAL_OPT:,QB_TCPSERIAL_OPT:,QB_ROOTFS_EXTRA_OPT:</br>
+</br>
+
+Ended up setting up fresh new can boards with respective rpi's and connecting them.</br>
+
+    
+
+
+
+                  </p>
+
+
+
+
+
+
+    </article>
+
+
+</section>
+
+
+
+
+
+<!--
 <aside class="sidebar big-sidebar right-sidebar">
 
 
