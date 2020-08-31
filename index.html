@@ -158,7 +158,7 @@ body {
 	<div class="width">
 	    <div class="intro-content" >
 
-		<h2>A long time ago, in a galaxy far far away</br> a kid made a walkthrough</h2></br>
+		<h2>A long time ago, in a galaxy far far away</br> a jedi made a walkthrough</h2></br>
                 </br>
                 </br>
                 </br>
@@ -288,19 +288,39 @@ body {
 	</br>
 	</br>
 
-	Qemu configuration
+	Qemu configuration</br>
+	enter as "root" when the boot asks for a login
 
     </section>
 
 	<section id="content" class="two-column with-right-sidebar" >
 
 		<p>
-			
+
 			$ runqemu slirp kvm nographic</br>
 
 		</p>
 
 	</section>
+
+    </br>
+    </div>
+    
+    <div>
+<!-- Connecting to the qemu machine externally -->
+	<section>
+		
+	</section>
+
+	<section id="content" class="two-column with-right-sidebar">
+
+		<p>
+		    $ nc localhost 4321</br>
+		</p>
+
+	</section>
+	
+		<img href="">add ss of how it should look</img>
 
     </br>
     </div>
@@ -320,34 +340,16 @@ body {
 	<section id="content" class="two-column with-right-sidebar">
 
 		<p>
+
 		    $ jailhouse enable /usr/share/jailhouse/cells/qemu-agl.cell</br>
-		    $ jailhouse cell create /usr/share/jailhouse/cells/agl-apic-demo.cell</br>
-		    $ jailhouse cell load apic-demo /usr/share/jailhouse/inmate/apic-demo.bin</br>
+
 		</p>
 
 	</section>
 
     </br>
     </div>
-    
-    <div>
-<!-- Connecting to the qemu machine externally -->
-	<section>
-		___________________________________________________________________
-	</section>
 
-	<section id="content" class="two-column with-right-sidebar">
-
-		<p>
-		    $ nc localhost 4321</br>
-		    $ telnet localhost 4321</br>
-		    $ jailhouse cell start apic-demo</br>
-		</p>
-
-	</section>
-
-    </br>
-    </div>
     
     <div>
     <section>
@@ -359,9 +361,56 @@ body {
 	<section id="content" class="two-column with-right-sidebar">
 
 		<p>
+
+		    $ jailhouse cell create /usr/share/jailhouse/cells/agl-apic-demo.cell</br>
+		    $ jailhouse cell load apic-demo /usr/share/jailhouse/inmate/apic-demo.bin</br>
+
 		</p>
 
 	</section>
+
+    </br>
+    </div>
+
+    <div>
+    <section>
+	</br>
+	</br>
+	____________________________________________________________________________
+    </section>
+
+	<section id="content" class="two-column with-right-sidebar">
+
+		<p>
+
+		    $ jailhouse cell start apic-demo</br>
+		    $ jailhouse cell stats apic-demo</br>
+
+		</p>
+
+	</section>
+
+    </br>
+    </div>
+
+    <div>
+    <section>
+	</br>
+	</br>
+	____________________________________________________________________________
+    </section>
+
+	<section id="content" class="two-column with-right-sidebar">
+
+		<p>
+		    $ jailhouse cell shutdown apic-demo</br>
+		    $ jailhouse cell destroy apic-demo</br>
+		</p>
+
+	</section>
+
+    </br>
+    </div>
 
 <!--
 	<aside class="sidebar big-sidebar right-sidebar">
