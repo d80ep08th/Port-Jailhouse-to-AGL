@@ -367,11 +367,11 @@ Common targets are:</br>
 			##this will build both the jailhouse module and the kernel but,</br>
 			</br>
 			##you can specifically build the jailhouse module (for changes you make to its layer)</br>
-			$ bitbake jailhouse</br>
+			##$ bitbake jailhouse</br>
 			
 			##You can also do the same for the kernel.</br>
 			##To get kernel source tree, you have to build kernel once</br>
-			$ bitbake virtual/kernel</br>
+			##$ bitbake virtual/kernel</br>
 		
 		</p>
 
@@ -446,9 +446,6 @@ Common targets are:</br>
 	</br>
 	</br>
 
-	https://github.com/siemens/jailhouse</br>
-	https://github.com/siemens/jailhouse-images</br>
-
     </section>
 
 	<section id="content" class="two-column with-right-sidebar">
@@ -457,50 +454,50 @@ Common targets are:</br>
 		    $ jailhouse hardware check </br>
 <a>
 qemux86-64:~# jailhouse hardware check
-Feature                         Availability</br>
-------------------------------  ------------------</br>
-Number of CPUs > 1              ok</br>
-Long mode                       ok</br>
-x2APIC                          ok</br>
+Feature				Availability</br>
+------------------------------	------------------</br>
+Number of CPUs > 1		ok</br>
+Long mode			ok</br>
+x2APIC				ok</br>
 </br>
-VT-x (VMX)                      ok</br>
-  VMX outside SMX               ok</br>
-  VMX inside SMX                missing (optional)</br>
-  IA32_TRUE_*_CLTS              ok</br>
-  NMI exiting                   ok</br>
-  Preemption timer              ok</br>
-  I/O bitmap                    ok</br>
-  MSR bitmap                    ok</br>
-  Secondary controls            ok</br>
-  Optional CR3 interception     ok</br>
-  Virtualize APIC access        ok</br>
-  RDTSCP                        ok</br>
-  Unrestricted guest            ok</br>
-  INVPCID                       missing (optional)</br>
-  XSAVES                        ok</br>
-  EPT                           ok</br>
-    4-level page walk           ok</br>
-    EPTP write-back             ok</br>
-    2M pages                    ok</br>
-    1G pages                    missing (optional)</br>
-    INVEPT                      ok</br>
-      Single or all-context     ok</br>
-  VM-exit save IA32_PAT         ok</br>
-  VM-exit load IA32_PAT         ok</br>
-  VM-exit save IA32_EFER        ok</br>
-  VM-exit load IA32_EFER        ok</br>
-  VM-entry load IA32_PAT        ok</br>
-  VM-entry load IA32_EFER       ok</br>
-  Activity state HLT            ok</br>
+VT-x (VMX)			ok</br>
+  VMX outside SMX		ok</br>
+  VMX inside SMX		missing (optional)</br>
+  IA32_TRUE_*_CLTS		ok</br>
+  NMI exiting			ok</br>
+  Preemption timer		ok</br>
+  I/O bitmap			ok</br>
+  MSR bitmap			ok</br>
+  Secondary controls		ok</br>
+  Optional CR3 interception	ok</br>
+  Virtualize APIC access	ok</br>
+  RDTSCP			ok</br>
+  Unrestricted guest		ok</br>
+  INVPCID			missing (optional)</br>
+  XSAVES			ok</br>
+  EPT				ok</br>
+    4-level page walk		ok</br>
+    EPTP write-back		ok</br>
+    2M pages			ok</br>
+    1G pages			missing (optional)</br>
+    INVEPT			ok</br>
+      Single or all-context	ok</br>
+  VM-exit save IA32_PAT		ok</br>
+  VM-exit load IA32_PAT		ok</br>
+  VM-exit save IA32_EFER	ok</br>
+  VM-exit load IA32_EFER	ok</br>
+  VM-entry load IA32_PAT	ok</br>
+  VM-entry load IA32_EFER	ok</br>
+  Activity state HLT		ok</br>
 </br>
-VT-d (IOMMU #0)                 ok</br>
-  39-bit AGAW                   ok</br>
-  48-bit AGAW                   missing (optional)</br>
-  2M pages                      ok</br>
-  1G pages                      ok</br>
-  Queued invalidation           ok</br>
-  Interrupt remapping           ok</br>
-  Extended interrupt mode       ok</br>
+VT-d (IOMMU #0)			ok</br>
+  39-bit AGAW			ok</br>
+  48-bit AGAW			missing (optional)</br>
+  2M pages			ok</br>
+  1G pages			ok</br>
+  Queued invalidation		ok</br>
+  Interrupt remapping		ok</br>
+  Extended interrupt mode	ok</br>
 </br>
 Check passed!</br>
 </a>
@@ -537,6 +534,26 @@ Check passed!</br>
     </br>
 	<img src="porting/create.png"></img>
     </br>
+    </div>
+
+    <div>
+    <section>
+	</br>
+	</br>
+	____________________________________________________________________________
+    </section>
+
+	<section id="content" class="two-column with-right-sidebar">
+
+		<p>
+
+		
+		    $ jailhouse cell load apic-demo /usr/share/jailhouse/inmate/apic-demo.bin</br>
+
+		</p>
+
+	</section>
+
 	<img src="pics/load.png"></img>
     </br>
 	<img src="porting/load.png"></img>
