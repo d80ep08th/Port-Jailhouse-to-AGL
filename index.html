@@ -182,10 +182,16 @@ body {
 
     <div id="body" class="width">
 
-	<section>
-		 https://wiki.automotivelinux.org/agl-distro/source-code </br>
-		________________________________________________________
-	</section>
+    <div>
+<!-- Cloning AGL -->
+    <section>
+
+	</br>
+	</br>
+	</br>
+	https://wiki.automotivelinux.org/agl-distro/source-code </br>
+
+    </section>
 
 	<section id="content" class="two-column with-right-sidebar">
 
@@ -202,37 +208,118 @@ body {
 	</section>
 
     </br>
+    </div>
+    
+    <div>
+<!-- Inside Build Dir -->
+    <section>
 
-	<section>
-		__________________________________________________________________
+	</br>
+	</br>
+	</br>
+	make the build dir
+
+    </section>
+
+	<section id="content" class="two-column with-right-sidebar" >
+
+		<p>
+
+		$ source /meta-agl/scripts/aglsetup.sh -b build-dir-name agl-demo agl-devel agl-jailhouse</br>
+
+		</p>
 	</section>
+
+    </br>
+    </div>
+    
+    <div>
+    <section>
+
+	</br>
+	</br>
+	</br>
+	source this script to be able to start bit-baking 
+
+    </section>
+
+	<section id="content" class="two-column with-right-sidebar" >
+
+		<p>
+
+		$ source agl-init-build-dev</br>
+
+		</p>
+
+	</section>
+
+    </br>
+    </div>
+
+    <div>
+    <section>
+	</br>
+	</br>
+	</br>
+
+	https://www.yoctoproject.org/docs/1.6/bitbake-user-manual/bitbake-user-manual.html>
+
+    </section>
 
 	<section id="content" class="two-column with-right-sidebar" >
 
 		<p>
 		
-		$ source /meta-agl/scripts/aglsetup.sh -b build-dir-name agl-demo agl-devel agl-jailhouse</br>
-		$ source agl-init-build-dev</br>
+		
 		$ bitbake agl-image-minimal</br>
 			$ bitbake jailhouse</br>
 			$ bitbake virtual/kernel</br>
-			$ runqemu slirp kvm nographic</br>
 		
 		</p>
 
 	</section>
 
     </br>
-    </br>
+    </div>
 
-	<section>
-		___________________________________________________________________
+    <div>
+    <section>
+	</br>
+	</br>
+	</br>
+
+	Qemu configuration
+
+    </section>
+
+	<section id="content" class="two-column with-right-sidebar" >
+
+		<p>
+			
+			$ runqemu slirp kvm nographic</br>
+
+		</p>
+
 	</section>
+
+    </br>
+    </div>
+
+    <div>
+<!--- Inside Qemu -->
+    <section>
+	</br>
+	</br>
+	</br>
+
+	https://github.com/siemens/jailhouse</br>
+	https://github.com/siemens/jailhouse-images</br>
+
+    </section>
 
 	<section id="content" class="two-column with-right-sidebar">
 
 		<p>
-		
 		    $ jailhouse enable /usr/share/jailhouse/cells/qemu-agl.cell</br>
 		    $ jailhouse cell create /usr/share/jailhouse/cells/agl-apic-demo.cell</br>
 		    $ jailhouse cell load apic-demo /usr/share/jailhouse/inmate/apic-demo.bin</br>
@@ -241,7 +328,10 @@ body {
 	</section>
 
     </br>
-
+    </div>
+    
+    <div>
+<!-- Connecting to the qemu machine externally -->
 	<section>
 		___________________________________________________________________
 	</section>
@@ -257,11 +347,14 @@ body {
 	</section>
 
     </br>
-
-	
-	<section>
+    </div>
+    
+    <div>
+    <section>
+	</br>
+	</br>
 	____________________________________________________________________________
-	</section>
+    </section>
 
 	<section id="content" class="two-column with-right-sidebar">
 
