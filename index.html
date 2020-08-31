@@ -189,8 +189,10 @@ body {
 	</br>
 	</br>
 	</br>
-	https://wiki.automotivelinux.org/agl-distro/source-code </br>
-
+	<h2> Download the AGL master branch </h2>
+	
+	Run the following commands consecutively in the directory</br>
+	 where you want to build the AGL OS</br>
     </section>
 
 	<section id="content" class="two-column with-right-sidebar">
@@ -206,7 +208,11 @@ body {
 	    </article>
 
 	</section>
+	
 
+	You can click here to get a more verbose guide to cloning AGL:
+	<a href="https://wiki.automotivelinux.org/agl-distro/source-code">SOURCE CODE</a>
+	</br>
     </br>
     </div>
     
@@ -217,19 +223,40 @@ body {
 	</br>
 	</br>
 	</br>
-	make the build dir
-
+	<h2>Create the Build Directory</h2></br>
+	
+	To build the QEMU version of the AGL OS with the Jailhouse hypervisor</br>
+	</br>
+	</br>
+	Run the following command, it will build a directory where all the work specific to that
+	build will be stored.
+	<img > structure of directory </img>
+	
     </section>
 
 	<section id="content" class="two-column with-right-sidebar" >
 
 		<p>
 
-		$ source /meta-agl/scripts/aglsetup.sh -b build-dir-name agl-demo agl-devel agl-jailhouse</br>
+		$ source /meta-agl/scripts/aglsetup.sh -m qemux86-64 -b build-dir-name agl-demo agl-devel agl-jailhouse</br>
+		
+		##this will automotically change the directory to the build-dir-name/ with the following tree</br>
+		##.</br>
+		##├── agl-init-build-env</br>
+		##├── aglsetup.manifest</br>
+		##└── conf</br>
+		####    ├── bblayers.conf</br>
+		####    ├── fragments.log</br>
+		####    ├── local.conf</br>
+		####    ├── setup.log</br>
+		####    └── templateconf.cfg</br>
 
 		</p>
 	</section>
-
+	The following are features and why they are used: </br>
+	agl-demo: enable layer meta-agl-demo and meta-qt5 - required to build agl-demo-platform </br>
+	agl-devel: activate development options (empty root password, debugger, strace, valgrind …)</br>
+	agl-jailhouse : enable layer meta-agl-jailhouse , required to build the out-of-kernel Jailhouse module </br>
     </br>
     </div>
     
@@ -239,7 +266,7 @@ body {
 	</br>
 	</br>
 	</br>
-	source this script to be able to start bit-baking 
+	source this script to be able to start bit-baking(or in fancy words, to initialize the build development)
 
     </section>
 
@@ -248,11 +275,60 @@ body {
 		<p>
 
 		$ source agl-init-build-dev</br>
+<h5>
+<a>
+Common targets are:</br>
+- meta-agl layer:</br>
+  - included by default</br>
+    * agl-image-boot                (just enough to boot)</br>
+    * agl-image-minimal             (minimal filesystem with APIs)</br>
+    * agl-image-minimal-crosssdk    (crosssdk for ^^)</br>
+</br>
+  - with 'agl-profile-graphical'</br>
+    * agl-image-weston              (minimal filesystem with weston)</br>
+</br>
+  - with 'agl-profile-graphical-qt5'</br>
+    * agl-image-graphical-qt5       (weston plus qt5 framework libs)</br>
+    * agl-image-graphical-qt5-crosssdk  (crosssdk for ^^)</br>
+</br>
+  - with 'agl-profile-graphical-html5'</br>
+    * agl-image-graphical-html5     (weston plus chromium for html5)</br>
+</br>
+  - with 'agl-profile-cluster'</br>
+    * agl-image-cluster             (minimal image with APIs for cluster)</br>
 
+  - with 'agl-profile-cluster-qt5'</br>
+    * agl-image-cluster-qt5         (image with QT5 and APIs for cluster)</br>
+
+  - with 'agl-profile-telematics'</br>
+    * agl-image-telematics          (image with APIs for telematics)</br>
+</br>
+- meta-agl-cluster-demo layer:      (Instrument Cluster demo with UI)</br>
+  - with 'agl-cluster-demo'</br>
+    * agl-cluster-demo-platform     (cluster demo image)</br>
+    * agl-cluster-demo-platform-crosssdk  (sdk for ^^)</br>
+    * agl-cluster-demo-qtcompositor (cluster demo using own compositor)</br>
+</br>
+- meta-agl-telematics-demo layer:   (Telematics demo w/o UI)</br>
+  - with 'agl-telematics-demo'</br>
+    * agl-telematics-demo-platform  (telematics demo image)</br>
+    * agl-telematics-demo-platform-crosssdk  (sdk for ^^)</br>
+</br>
+- meta-agl-demo:                    (IVI demo with UI)</br>
+  - with 'agl-demo'</br>
+    * agl-image-ivi                 (base for IVI targets)</br>
+    * agl-image-ivi-crosssdk           (sdk for ^^)</br>
+</br>
+    * agl-demo-platform             (* default IVI demo target *)</br>
+    * agl-demo-platform-crosssdk       (sdk for ^^)</br>
+</br>
+</a>
+</h5>
 		</p>
 
 	</section>
-
+	
+    <img> shows the output given by agl-init-build-dev </img>
     </br>
     </div>
 
@@ -261,24 +337,49 @@ body {
 	</br>
 	</br>
 	</br>
+	<h2> Bitbake </h2>
+	
 
-	https://www.yoctoproject.org/docs/1.6/bitbake-user-manual/bitbake-user-manual.html>
-
+	NOTE : THIS MAY TAKE ALOT OF TIME(hours) TO BUILD</br>
+	</br>
+	[ DEPENDING ON HOW POWERFUL YOUR MACHINE IS]</br>
+	</br>
+	[Even the most powerful machine will take atleast half an hr to get done with the build]</br>
+	</br>
+	You can manipulate this to some extent by properly assigning the variables </br>
+	</br>
+	DL_DIR & SSTATE_DIR in conf/local.conf in your build-directory.</br>
+	</br>
+	bitbake will by default create a tmp/ directory on the first build</br> 
+	where all the work is stored </br>
+	You can delete this directory if something goes wrong and restart the build </br>
+	</br>
     </section>
 
 	<section id="content" class="two-column with-right-sidebar" >
 
 		<p>
 		
-		
-		$ bitbake agl-image-minimal</br>
+			
+			$ bitbake agl-image-minimal</br>
+			##the above command will build the OS , enough to be able to boot on qemux86-64</br>
+			##this will build both the jailhouse module and the kernel but,</br>
+			</br>
+			##you can specifically build the jailhouse module (for changes you make to its layer)</br>
 			$ bitbake jailhouse</br>
+			
+			##you can also do the same for the kernel</br>
 			$ bitbake virtual/kernel</br>
 		
 		</p>
 
 	</section>
-
+	To know more about bitbake and what it can do, click here:
+	<a href="https://www.yoctoproject.org/docs/1.6/bitbake-user-manual/bitbake-user-manual.html">BITBAKE</a>
+	</br>
+	</br>
+	To read more about the way directories are structured and their purpose , click here:
+	<a href="http://git.yoctoproject.org/cgit.cgi/poky/plain/README.structure?h=blinky"> POKY DIRECTORY TREE </a>
     </br>
     </div>
 
@@ -288,21 +389,25 @@ body {
 	</br>
 	</br>
 
-	Qemu configuration</br>
-	enter as "root" when the boot asks for a login
+	<h2> Qemu x86-64</h2></br>
+	
 
     </section>
 
 	<section id="content" class="two-column with-right-sidebar" >
 
 		<p>
-
+			<!-- $bitbake -e | grep -i ^QB -->
+			##this will start the qemu machine based on the preconfigured QB(qemu-boot) variables</br>
+			## Use the command--> $ bitbake -e | grep -i ^QB to checkout the configuration</br></br>
+			## here , bitbake -e is the environment dump that gets parsed before the build actually starts </br></br>
 			$ runqemu slirp kvm nographic</br>
 
 		</p>
 
 	</section>
-
+	Enter the user login as: root
+    </br>
     </br>
     </div>
     
@@ -315,12 +420,17 @@ body {
 	<section id="content" class="two-column with-right-sidebar">
 
 		<p>
+		## Externally connect to the qemu machine by executing this command</br>
+		## on another shell on the same machine </br>
+
+		## This will help us view the progress of Jailhouse hypervisor in a more verbose manner
+		</br>
 		    $ nc localhost 4321</br>
 		</p>
 
 	</section>
 	
-		<img href="">add ss of how it should look</img>
+		<img href="">add ss of how it should look at every jailhouse step</img>
 
     </br>
     </div>
