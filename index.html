@@ -230,7 +230,7 @@ body {
 	</br>
 	Run the following command, it will build a directory where all the work specific to that
 	build will be stored.
-	<img > structure of directory </img>
+	
 	
     </section>
 
@@ -239,8 +239,9 @@ body {
 		<p>
 
 		$ source /meta-agl/scripts/aglsetup.sh -m qemux86-64 -b build-dir-name agl-demo agl-devel agl-jailhouse</br>
-		
-		##this will automotically change the directory to the build-dir-name/ with the following tree</br>
+		</br>
+		##this will automotically change the directory to the build-dir-name/ </br>
+		##structure of this direct-tree :)
 		##.</br>
 		##├── agl-init-build-env</br>
 		##├── aglsetup.manifest</br>
@@ -368,7 +369,8 @@ Common targets are:</br>
 			##you can specifically build the jailhouse module (for changes you make to its layer)</br>
 			$ bitbake jailhouse</br>
 			
-			##you can also do the same for the kernel</br>
+			##You can also do the same for the kernel.</br>
+			##To get kernel source tree, you have to build kernel once</br>
 			$ bitbake virtual/kernel</br>
 		
 		</p>
@@ -399,14 +401,16 @@ Common targets are:</br>
 		<p>
 			<!-- $bitbake -e | grep -i ^QB -->
 			##this will start the qemu machine based on the preconfigured QB(qemu-boot) variables</br>
-			## Use the command--> $ bitbake -e | grep -i ^QB to checkout the configuration</br></br>
-			## here , bitbake -e is the environment dump that gets parsed before the build actually starts </br></br>
+			## Use the command--> $ bitbake -e | grep -i ^QB </br>##to checkout the configuration</br>
+			
 			$ runqemu slirp kvm nographic</br>
 
 		</p>
 
 	</section>
 	Enter the user login as: root
+	</br>
+	NOTE: bitbake -e : prints the environment dump that gets parsed even before the build starts
     </br>
     </br>
     </div>
@@ -450,13 +454,13 @@ Common targets are:</br>
 	<section id="content" class="two-column with-right-sidebar">
 
 		<p>
-
+		    $ jailhouse hardware check </br>
 		    $ jailhouse enable /usr/share/jailhouse/cells/qemu-agl.cell</br>
 
 		</p>
 
 	</section>
-
+    <img src="pics/enable.png"></img>
     </br>
     </div>
 
@@ -478,7 +482,9 @@ Common targets are:</br>
 		</p>
 
 	</section>
-
+	<img src="pics/create.png"></img>
+    </br>
+	<img src="pics/enable.png"></img>
     </br>
     </div>
 
@@ -499,7 +505,7 @@ Common targets are:</br>
 		</p>
 
 	</section>
-
+	<img src="pics/start.png"></img>
     </br>
     </div>
 
@@ -518,7 +524,9 @@ Common targets are:</br>
 		</p>
 
 	</section>
-
+	<img src="pics/shutdown.png"></img>
+    </br>
+	<img src="pics/destroy.png"></img>
     </br>
     </div>
 
