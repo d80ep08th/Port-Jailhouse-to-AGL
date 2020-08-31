@@ -158,10 +158,11 @@ body {
 	<div class="width">
 	    <div class="intro-content" >
 
-		<h2>A long time ago, in a galaxy far far away......</br>
+		<h2>A long time ago, in a galaxy far far away</br> a kid made a walkthrough</h2></br>
                 </br>
                 </br>
                 </br>
+		<h5>
                 We use AGL as the main OS to install a hypervisor on an AGL reference platform. 
 		</br>
                 </br>
@@ -173,33 +174,102 @@ body {
 		</br>
 		The RTOS running as guest on the hypervisor can then procure data in real time and communicate it with the AGL OS.</br>
 		</br>
-		</h2>
+		</h5>
 
 	    </div>
 	</div>
     </div>
 
-<!--
     <div id="body" class="width">
+
+	<section>
+		 https://wiki.automotivelinux.org/agl-distro/source-code </br>
+		________________________________________________________
+	</section>
+
 	<section id="content" class="two-column with-right-sidebar">
 
 	    <article>
 
-
-		<h2></h2>
--->
-<!--		<div class="article-info">Posted on
-		    <time datetime="2020-06-6">6 June</time> by
-		    <a href="#" rel="author">Parth Dode [GSOC'20 week 1]</a>
-		</div>
-
 		<p>
+		
+		$ repo init -u https://gerrit.automotivelinux.org/gerrit/AGL/AGL-repo</br>
+		$ repo sync</br>
 		</p>
 
 	    </article>
 
 	</section>
--->
+
+    </br>
+
+	<section>
+		__________________________________________________________________
+	</section>
+
+	<section id="content" class="two-column with-right-sidebar" >
+
+		<p>
+		
+		$ source /meta-agl/scripts/aglsetup.sh -b build-dir-name agl-demo agl-devel agl-jailhouse</br>
+		$ source agl-init-build-dev</br>
+		$ bitbake agl-image-minimal</br>
+			$ bitbake jailhouse</br>
+			$ bitbake virtual/kernel</br>
+			$ runqemu slirp kvm nographic</br>
+		
+		</p>
+
+	</section>
+
+    </br>
+    </br>
+
+	<section>
+		___________________________________________________________________
+	</section>
+
+	<section id="content" class="two-column with-right-sidebar">
+
+		<p>
+		
+		    $ jailhouse enable /usr/share/jailhouse/cells/qemu-agl.cell</br>
+		    $ jailhouse cell create /usr/share/jailhouse/cells/agl-apic-demo.cell</br>
+		    $ jailhouse cell load apic-demo /usr/share/jailhouse/inmate/apic-demo.bin</br>
+		</p>
+
+	</section>
+
+    </br>
+
+	<section>
+		___________________________________________________________________
+	</section>
+
+	<section id="content" class="two-column with-right-sidebar">
+
+		<p>
+		    $ nc localhost 4321</br>
+		    $ telnet localhost 4321</br>
+		    $ jailhouse cell start apic-demo</br>
+		</p>
+
+	</section>
+
+    </br>
+
+	
+	<section>
+	____________________________________________________________________________
+	</section>
+
+	<section id="content" class="two-column with-right-sidebar">
+
+		<p>
+		</p>
+
+	</section>
+
 <!--
 	<aside class="sidebar big-sidebar right-sidebar">
 	</aside>
@@ -208,7 +278,7 @@ body {
 	</div>
     </div>
 -->
-
+    </div>
     <footer>
 
     </footer>
