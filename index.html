@@ -434,7 +434,7 @@ Common targets are:</br>
 
 	</section>
 	
-		<img href="">add ss of how it should look at every jailhouse step</img>
+	<img src="porting/login.png"></img>
 
     </br>
     </div>
@@ -455,12 +455,63 @@ Common targets are:</br>
 
 		<p>
 		    $ jailhouse hardware check </br>
+<a>
+qemux86-64:~# jailhouse hardware check
+Feature                         Availability</br>
+------------------------------  ------------------</br>
+Number of CPUs > 1              ok</br>
+Long mode                       ok</br>
+x2APIC                          ok</br>
+</br>
+VT-x (VMX)                      ok</br>
+  VMX outside SMX               ok</br>
+  VMX inside SMX                missing (optional)</br>
+  IA32_TRUE_*_CLTS              ok</br>
+  NMI exiting                   ok</br>
+  Preemption timer              ok</br>
+  I/O bitmap                    ok</br>
+  MSR bitmap                    ok</br>
+  Secondary controls            ok</br>
+  Optional CR3 interception     ok</br>
+  Virtualize APIC access        ok</br>
+  RDTSCP                        ok</br>
+  Unrestricted guest            ok</br>
+  INVPCID                       missing (optional)</br>
+  XSAVES                        ok</br>
+  EPT                           ok</br>
+    4-level page walk           ok</br>
+    EPTP write-back             ok</br>
+    2M pages                    ok</br>
+    1G pages                    missing (optional)</br>
+    INVEPT                      ok</br>
+      Single or all-context     ok</br>
+  VM-exit save IA32_PAT         ok</br>
+  VM-exit load IA32_PAT         ok</br>
+  VM-exit save IA32_EFER        ok</br>
+  VM-exit load IA32_EFER        ok</br>
+  VM-entry load IA32_PAT        ok</br>
+  VM-entry load IA32_EFER       ok</br>
+  Activity state HLT            ok</br>
+</br>
+VT-d (IOMMU #0)                 ok</br>
+  39-bit AGAW                   ok</br>
+  48-bit AGAW                   missing (optional)</br>
+  2M pages                      ok</br>
+  1G pages                      ok</br>
+  Queued invalidation           ok</br>
+  Interrupt remapping           ok</br>
+  Extended interrupt mode       ok</br>
+</br>
+Check passed!</br>
+</a>
 		    $ jailhouse enable /usr/share/jailhouse/cells/qemu-agl.cell</br>
 
 		</p>
 
 	</section>
     <img src="pics/enable.png"></img>
+    </br>
+    <img src="porting/enable.png"></png>
     </br>
     </div>
 
@@ -484,7 +535,11 @@ Common targets are:</br>
 	</section>
 	<img src="pics/create.png"></img>
     </br>
-	<img src="pics/enable.png"></img>
+	<img src="porting/create.png"></img>
+    </br>
+	<img src="pics/load.png"></img>
+    </br>
+	<img src="porting/load.png"></img>
     </br>
     </div>
 
@@ -507,6 +562,7 @@ Common targets are:</br>
 	</section>
 	<img src="pics/start.png"></img>
     </br>
+	<img src="porting/start.png"></img>
     </div>
 
     <div>
@@ -526,7 +582,11 @@ Common targets are:</br>
 	</section>
 	<img src="pics/shutdown.png"></img>
     </br>
+	<img src="porting/shutdown.png"></img>
+    </br>
 	<img src="pics/destroy.png"></img>
+    </br>
+	<img src="porting/destroy.png"></img>
     </br>
     </div>
 
