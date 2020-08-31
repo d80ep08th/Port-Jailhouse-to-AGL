@@ -213,31 +213,32 @@ body {
 
         <h2>
 
-	TITLE
+	Week8
         </h2>
 	<!-- <div class="article-info">Posted on <time datetime="2020-06-26">26 June</time></div>
 	-->
                   <p>
 This week: need to compare and update the flags used for runqemu to run jailhouse in qemux86-64</br>
 Now this requires making changes and adding more tags to the basic script used by runqemu:-</br>
-tmp/work/x86_64-linux/qemu-helper-native/1.0-r1/recipe-sysroot-native/usr/bin//qemu-system-x86_64</br>
- -device virtio-net-pci,netdev=net0,mac=52:54:00:12:34:02 \</br>
- -netdev tap,id=net0,ifname=tap0,script=no,downscript=no -drive file=tmp/deploy/images/qemux86-64/agl-demo-platform-qemux86-64-20180206055341.rootfs.ext4,if=virtio,format=raw \</br>
- -show-cursor -usb -usbdevice tablet -device virtio-rng-pci -vga virtio  -machine q35 -cpu kvm64 -cpu qemu64,+ssse3,+sse4.1,+sse4.2,+popcnt -enable-kvm -m 2048 \</br>
- -serial mon:vc -serial mon:stdio -serial null -kernel tmp/deploy/images/qemux86-64/bzImage--4.10.17+git0+40ee48ac09_c1d8c4408b-r0-qemux86-64-20171214150211.bin \</br>
- -append 'root=/dev/vda rw highres=off  console=ttyS0 mem=2048M ip=192.168.7.2::192.168.7.1:255.255.255.0 vga=0 uvesafb.mode_option=1024x768-32 oprofile.timer=1 uvesafb.task_timeout=-1 '</br>
+tmp/work/x86_64-linux/qemu-helper-native/1.0-r1/recipe-sysroot-native/usr/bin/</br>
+qemu-system-x86_64</br>
+</br>    -device virtio-net-pci,netdev=net0,mac=52:54:00:12:34:02 \</br>
+</br>    -netdev tap,id=net0,ifname=tap0,script=no,downscript=no -drive file=tmp/deploy/images/qemux86-64/agl-demo-platform-qemux86-64-20180206055341.rootfs.ext4,if=virtio,format=raw \</br>
+</br>    -show-cursor -usb -usbdevice tablet -device virtio-rng-pci -vga virtio  -machine q35 -cpu kvm64 -cpu qemu64,+ssse3,+sse4.1,+sse4.2,+popcnt -enable-kvm -m 2048 \</br>
+</br>    -serial mon:vc -serial mon:stdio -serial null -kernel tmp/deploy/images/qemux86-64/bzImage--4.10.17+git0+40ee48ac09_c1d8c4408b-r0-qemux86-64-20171214150211.bin \</br>
+</br>    -append 'root=/dev/vda rw highres=off  console=ttyS0 mem=2048M ip=192.168.7.2::192.168.7.1:255.255.255.0 vga=0 uvesafb.mode_option=1024x768-32 oprofile.timer=1 uvesafb.task_timeout=-1 '</br>
 </br>
 
-The early realisation was-</br>
-to remove all the unwanted spaces & make it cleaner (works wonders)</br>
-go about checking the qemu manual and all the flags given (and qemu has alot of them.)</br>
-my qemu was at v2 and required am upgrade to v5</br>
-compare script with the script made by jailhouse for its isar build based images which can be found here: https://github.com/siemens/jailhouse-images/blob/master/start-qemu.sh</br>
+</br>The early realisation was-</br>
+</br>to remove all the unwanted spaces & make it cleaner (works wonders)</br>
+</br>go about checking the qemu manual and all the flags given (and qemu has alot of them.)</br>
+</br>my qemu was at v2 and required am upgrade to v5</br>
+</br>compare script with the script made by jailhouse for its isar build based images which can be found here: https://github.com/siemens/jailhouse-images/blob/master/start-qemu.sh</br>
 
-Another part of this task is to modify the QB variables so that runqemu does the right thing, using the following links to get there :</br>
-https://git.yoctoproject.org/cgit.cgi/poky/plain/meta/classes/qemuboot.bbclass</br>
-https://git.yoctoproject.org/cgit.cgi/poky/plain/scripts/runqemu</br>
-Upcoming gsoc evaluations in the following week</br>
+</br>Another part of this task is to modify the QB variables so that runqemu does the right thing, using the following links to get there :</br>
+</br>https://git.yoctoproject.org/cgit.cgi/poky/plain/meta/classes/qemuboot.bbclass</br>
+</br>https://git.yoctoproject.org/cgit.cgi/poky/plain/scripts/runqemu</br>
+</br>Upcoming gsoc evaluations in the following week</br>
     
 
 
